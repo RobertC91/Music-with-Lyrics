@@ -1,13 +1,17 @@
+html {
+  background-color: #cacaca;
+}
+
 #lyricsContainer {
-    max-height: 200px;
-    overflow-y: scroll;
-    margin-top: 20px;
-  }
-  
-  #lyrics {
-    line-height: 1.5;
-  }
-  
-  .title {
-    text-align: center;
-  }
+  max-height: 200px;
+  overflow-y: scroll;
+  margin-top: 20px;
+}
+
+#lyrics {
+  line-height: 1.5;
+}
+
+.title {
+  text-align: center;
+}
