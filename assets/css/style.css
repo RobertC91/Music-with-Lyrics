@@ -1,17 +1,19 @@
 html {
   background-color: #cacaca;
+  box-sizing: border-box;
 }
 
-#lyricsContainer {
-  max-height: 200px;
-  overflow-y: scroll;
-  margin-top: 20px;
-}
-
-#lyrics {
-  line-height: 1.5;
-}
-
-.title {
+section {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+}
+
+.input {
+  width: 75%;
+}
+
+.lyricContainer {
+  background-color: black;
+  color: white;
 }
