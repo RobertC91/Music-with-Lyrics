@@ -4,42 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player with Lyrics</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   </head>
   <body>
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Music Player with Lyrics</h1>
-        <div class="container mx-auto p-4">
-          <h1 class="text-2xl font-bold mb-4">Search Songs</h1>
-          <div class="flex">
-            <input id="searchInput" type="text" class="border border-gray-300 px-4 py-2 rounded-l-md w-full" placeholder="Enter a song name">
-            <button id="searchButton" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-md">Search</button>
-          </div>
-          <div id="searchResults" class="mt-4"></div>
-        </div>
-        <div class="columns is-centered">
-          <div class="column is-half">
-            <div id="player" class="box">
-              <audio id="audioPlayer" controls></audio>
-              <div id="lyricsContainer" class="content">
-                <div id="lyrics"></div>
-              </div>
-            </div>
-           
-            <div id="storedSong" class="box">
-              <strong>Stored Song:</strong>
-              <span id="storedSongText"></span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="section is-medium">
+      <p id='search' class="container">
+        <input id='songSearch' class="input" type="search" placeholder="Search Song Name">
+        <input id='artistSearch' class="input" type="search" placeholder="Search Artist">
+      </p>
+      <p class="control">
+        <input id='searchButton' class="button is-black" type="submit" value="Submit">
+      </p>
     </section>
-    <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
+
+    <section id="lyrics">
+
+    </section>
+
+    <section>
+      <h2>History</h2>
+      <table id='history' class="table">      
+
+      </table>
+    </section>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <img src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuXW">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>

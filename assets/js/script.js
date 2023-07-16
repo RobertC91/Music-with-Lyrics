@@ -1,19 +1,13 @@
-const audioPlayer = document.getElementById("audioPlayer");
-const lyricsContainer = document.getElementById("lyricsContainer");
-const searchedSongs = document.getElementById("storedSongText");
-const searchInput = document.getElementById('searchInput')
-const artistQuery = "Immortal Technique"
-const searchButton = document.getElementById("searchButton")
+let searchButton = document.getElementById("searchButton")
 const musicAPIKey = "0996a1c4acbf700517ecfedf926ddcde"
-const lyricsAPIKey = "edb60ff7bf4e024322127eafa296dd31"
+let searchArtist = document.getElementById('artistSearch')
+let searchSong = document.getElementById('songSearch')
 
-
-
-
-// Fetch lyrics for a given song and display them
 function fetchLyrics() {
-  const songQuery = searchInput.value
-  console.log(songQuery)
+ 
+let songQuery = JSON.parse(localStorage.getItem('songQuery'))
+let artistQuery = JSON.parse(localStorage.getItem('artistQuery'))
+
 $.ajax({
   type:"GET",
   data: {
@@ -32,38 +26,52 @@ $.ajax({
   },
   error: function(jqHXR, textStatus, errorThrown) {
     console.log(jqHXR)
-  }
+  }  
 })
-.then(function(data) {
-  // grab lyrics and append them to the page
-  let lyricData = data.message.body.lyrics.lyrics_body;
-  lyricsContainer.append(lyricData)
+
+// Take lyrics from API and display on page
+.then(function (data) {
+  console.log(data)
+
+  let lyricInput = $('#lyrics')
+  lyricInput.addClass('lyricContainer');
+
+let lyrics = data.message.body.lyrics.lyrics_body;
+console.log(lyrics)
+let lyricsEl = $('<p>')
+lyricsEl.text(lyrics)
+lyricInput.append(lyrics)
 })
 }
+// Display History using Local Storage
+function displayHistory() {
+  
+  let storedSongs = JSON.parse(localStorage.getItem('songs')) || [];
+  let history = document.getElementById('history')
+  history.innetHTML = ''
 
+  for (i = 0; i < storedSongs.length; i++) {
+    let historyBtn = document.createElement('button');
+    historyBtn.textContent = `${storedSongs[i]}`
+    history.appendChild(historyBtn)
+  }
+  return
+}
 
-
-// Event listener for when a song is selected from the dropdown
-audioPlayer.addEventListener("change", (event) => {
-const selectedSong = event.target.value;
-// Load the selected song
-audioPlayer.src = selectedSong;
-
-// Save the selected song to local storage
-localStorage.setItem(localStorageKey, selectedSong);
+$(document).ready(function () {
+  $("searchButton").on('click', function() {
+    let songQuery = searchSong.val();
+    let artistQuery = searchArtist.val()
+    localStorage.setItem(artistQuery, songQuery);
+    });
 });
- 
-searchButton.addEventListener('click', function() {
-    // take input information and send it to API
-    const inputValue = searchInput.value    
-    localStorage.setItem('searchInputValue', inputValue)
-    console.log(inputValue)
- })
 
- const savedValue = localStorage.getItem('searchInputValue');
- 
- searchedSongs.textContent = savedValue;
 
- fetchLyrics()
+const localStorageKey = localStorage.getItem('searchSongsValue')
+
+
+
+displayHistory()
+fetchLyrics()
 
 
