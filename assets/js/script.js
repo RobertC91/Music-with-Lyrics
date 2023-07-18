@@ -2,11 +2,13 @@ let searchButton = document.getElementById("searchButton")
 const musicAPIKey = "0996a1c4acbf700517ecfedf926ddcde"
 let searchArtist = document.getElementById('artistSearch')
 let searchSong = document.getElementById('songSearch')
+let sSong = searchSong.value
+let sArtist = searchArtist.value
 
 function fetchLyrics() {
  
-let songQuery = JSON.parse(localStorage.getItem('songQuery'))
-let artistQuery = JSON.parse(localStorage.getItem('artistQuery'))
+let songQuery = (localStorage.getItem('songQuery'))
+let artistQuery = (localStorage.getItem('artistQuery'))
 
 $.ajax({
   type:"GET",
@@ -27,6 +29,7 @@ $.ajax({
   error: function(jqHXR, textStatus, errorThrown) {
     console.log(jqHXR)
   }  
+
 })
 
 // Take lyrics from API and display on page
@@ -59,19 +62,26 @@ function displayHistory() {
 }
 
 $(document).ready(function () {
-  $("searchButton").on('click', function() {
-    let songQuery = searchSong.val();
-    let artistQuery = searchArtist.val()
-    localStorage.setItem(artistQuery, songQuery);
+  $("#searchButton").on('click', function() {
+    let songQuery = sSong
+    let artistQuery = sArtist
+    localStorage.setItem(artistQuery,songQuery);
+    
+    fetchLyrics(songQuery,artistQuery)
+
     });
 });
 
 
 const localStorageKey = localStorage.getItem('searchSongsValue')
-
-
-
 displayHistory()
-fetchLyrics()
+
+
+
+
+
+
+
+
 
 
