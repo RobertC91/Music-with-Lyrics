@@ -45,20 +45,6 @@ lyricsEl.text(lyrics)
 lyricInput.append(lyrics)
 })
 }
-// Display History using Local Storage
-function displayHistory() {
-  
-  let storedSongs = JSON.parse(localStorage.getItem('songs')) || [];
-  let history = document.getElementById('history')
-  history.innetHTML = ''
-
-  for (i = 0; i < storedSongs.length; i++) {
-    let historyBtn = document.createElement('button');
-    historyBtn.textContent = `${storedSongs[i]}`
-    history.appendChild(historyBtn)
-  }
-  return
-}
 
 $(document).ready(function() {
   window.reload
@@ -67,16 +53,15 @@ $(document).ready(function() {
     let artistQuery = searchArtist.value;
     localStorage.setItem('songQuery', songQuery);
     localStorage.setItem('artistQuery', artistQuery);
-    songQuery = songQuery.getItem('songQuery');
-    console.log(songQuery)
-
+    // songQuery = songQuery.getItem('songQuery');
+    // console.log(songQuery)
+    fetchLyrics(artistQuery,songQuery)
     });
 });
 
 
-const localStorageKey = localStorage.getItem('searchSongsValue')
-displayHistory()
-fetchLyrics()
+
+
 
 
 
