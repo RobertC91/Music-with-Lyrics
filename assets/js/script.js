@@ -2,8 +2,7 @@ let searchButton = document.getElementById("searchButton")
 const musicAPIKey = "0996a1c4acbf700517ecfedf926ddcde"
 let searchArtist = document.getElementById('artistSearch')
 let searchSong = document.getElementById('songSearch')
-let sSong = searchSong.value
-let sArtist = searchArtist.value
+
 
 function fetchLyrics() {
  
@@ -61,13 +60,15 @@ function displayHistory() {
   return
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
+  window.reload
   $("#searchButton").on('click', function() {
-    let songQuery = sSong
-    let artistQuery = sArtist
-    localStorage.setItem(artistQuery,songQuery);
-    
-    fetchLyrics(songQuery,artistQuery)
+    let songQuery = searchSong.value;
+    let artistQuery = searchArtist.value;
+    localStorage.setItem('songQuery', songQuery);
+    localStorage.setItem('artistQuery', artistQuery);
+    songQuery = songQuery.getItem('songQuery');
+    console.log(songQuery)
 
     });
 });
@@ -75,6 +76,7 @@ $(document).ready(function () {
 
 const localStorageKey = localStorage.getItem('searchSongsValue')
 displayHistory()
+fetchLyrics()
 
 
 
