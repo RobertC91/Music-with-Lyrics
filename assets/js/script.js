@@ -46,9 +46,11 @@ lyricInput.append(lyrics)
 }
 
 
-function fetchVideo( songQuery, artistQuery) {
+function fetchVideo() {
+let videoSong = searchSong.value
+let videoArtist = searchArtist.value
 
-let url = "https://youtube.googleapis.com/youtube/v3/search?channelType=any&maxResults=1&order=viewCount&q="+songQuery+artistQuery+"&key=" + YTAPIKEY;
+let url = "https://youtube.googleapis.com/youtube/v3/search?channelType=any&maxResults=1&order=viewCount&q=" + videoSong + videoArtist + "&key=" + YTAPIKEY;
  
 
  fetch(url)
@@ -77,10 +79,10 @@ $(document).ready(function() {
     // songQuery = songQuery.getItem('songQuery');
     // console.log(songQuery)
     fetchLyrics(artistQuery,songQuery)
-    fetchVideo()
-    appendVideoPlayer()
+    fetchVideo()    
     });
 });
+appendVideoPlayer()
 
 
 

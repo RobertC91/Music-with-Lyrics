@@ -1,5 +1,4 @@
 html {
-  background-color: #cacaca;
   box-sizing: border-box;
 }
 
@@ -21,8 +20,7 @@ body {
   background-image: url("https://img.freepik.com/premium-photo/binary-code-string-aggregation-rises_622400-101.jpg?size=626&ext=jpg");
   background-repeat: no-repeat;
     background-size: cover;
-    overflow:hidden;
-    height: 100vh;  
+    height: 105vh;  
  }
 
 .input {
@@ -30,7 +28,11 @@ body {
 }
 
 .lyricContainer {
-  background-color: black;
+  background-color: #202225;
   color: white;
+}
+
+#player {
+  text-align: center;
 }
 
