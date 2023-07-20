@@ -5,10 +5,9 @@ let searchSong = document.getElementById('songSearch')
 let songQuery = (localStorage.getItem('songQuery'))
 let artistQuery = (localStorage.getItem('artistQuery'))
 let videoEmbedEl =  document.getElementById("player")
+
 function fetchLyrics(songQuery, artistQuery) {
  
-
-
 $.ajax({
   type:"GET",
   data: {
@@ -27,7 +26,7 @@ $.ajax({
   },
   error: function(jqHXR, textStatus, errorThrown) {
     console.log(jqHXR)
-  }  
+  }
 
 })
 
@@ -82,11 +81,6 @@ $(document).ready(function() {
     appendVideoPlayer()
     });
 });
-
-
-
-
-
 
 
 
