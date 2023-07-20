@@ -1,13 +1,13 @@
 let searchButton = document.getElementById("searchButton")
-const musicAPIKey = "0996a1c4acbf700517ecfedf926ddcde"
+const YTAPIKEY = "AIzaSyBmZokR6M4RS1FdQxcZ4FtwhsAaviJtm_I"
 let searchArtist = document.getElementById('artistSearch')
 let searchSong = document.getElementById('songSearch')
-
-
-function fetchLyrics() {
- 
 let songQuery = (localStorage.getItem('songQuery'))
 let artistQuery = (localStorage.getItem('artistQuery'))
+let videoEmbedEl =  document.getElementById("player")
+function fetchLyrics(songQuery, artistQuery) {
+ 
+
 
 $.ajax({
   type:"GET",
@@ -46,6 +46,28 @@ lyricInput.append(lyrics)
 })
 }
 
+
+function fetchVideo( songQuery, artistQuery) {
+
+let url = "https://youtube.googleapis.com/youtube/v3/search?channelType=any&maxResults=1&order=viewCount&q="+songQuery+artistQuery+"&key=" + YTAPIKEY;
+ 
+
+ fetch(url)
+.then((response) => response.json())
+.then((data) => {
+  console.log(data)
+  let vidID = data.items[0].id.videoId;
+  console.log(vidID)
+  appendVideoPlayer(vidID)
+  
+})
+}
+function appendVideoPlayer(vidID){
+  videoEmbedEl.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${vidID}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+
+}
+
+
 $(document).ready(function() {
   window.reload
   $("#searchButton").on('click', function() {
@@ -56,6 +78,8 @@ $(document).ready(function() {
     // songQuery = songQuery.getItem('songQuery');
     // console.log(songQuery)
     fetchLyrics(artistQuery,songQuery)
+    fetchVideo()
+    appendVideoPlayer()
     });
 });
 
