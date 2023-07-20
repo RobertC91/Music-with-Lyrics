@@ -3,11 +3,27 @@ html {
   box-sizing: border-box;
 }
 
+header {
+  padding: 60px;
+  text-align: center;
+  color: maroon;
+  font-size: 30px;
+  font-family: fantasy;
+ }
+
 section {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
+
+body {
+  background-image: url("https://img.freepik.com/premium-photo/binary-code-string-aggregation-rises_622400-101.jpg?size=626&ext=jpg");
+  background-repeat: no-repeat;
+    background-size: cover;
+    overflow:hidden;
+    height: 100vh;  
+ }
 
 .input {
   width: 75%;
@@ -17,3 +33,4 @@ section {
   background-color: black;
   color: white;
 }
+
