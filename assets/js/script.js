@@ -1,13 +1,11 @@
 let searchButton = document.getElementById("searchButton")
-const musicAPIKey = "0996a1c4acbf700517ecfedf926ddcde"
 let searchArtist = document.getElementById('artistSearch')
 let searchSong = document.getElementById('songSearch')
 
-
-function fetchLyrics() {
- 
 let songQuery = (localStorage.getItem('songQuery'))
 let artistQuery = (localStorage.getItem('artistQuery'))
+
+function fetchLyrics(songQuery, artistQuery) {
 
 $.ajax({
   type:"GET",
@@ -27,7 +25,7 @@ $.ajax({
   },
   error: function(jqHXR, textStatus, errorThrown) {
     console.log(jqHXR)
-  }  
+  }
 
 })
 
@@ -58,11 +56,6 @@ $(document).ready(function() {
     fetchLyrics(artistQuery,songQuery)
     });
 });
-
-
-
-
-
 
 
 
